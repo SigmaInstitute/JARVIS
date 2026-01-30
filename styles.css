@@ -1,0 +1,117 @@
+:root{
+  --bg:#0b0d10;
+  --card:#12161b;
+  --text:#e8eef5;
+  --muted:#aab6c2;
+  --line:#232a33;
+  --accent:#7dd3fc;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 700px at 20% 0%, #0f172a 0%, var(--bg) 55%);
+  color:var(--text);
+}
+
+.container{max-width:980px;margin:0 auto;padding:20px}
+.header{
+  display:flex;gap:16px;align-items:flex-start;justify-content:space-between;
+  padding-top:34px;padding-bottom:10px;
+}
+
+/* Header layout with avatar */
+.headerLeft{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.avatar{
+  width:72px;
+  height:72px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  object-fit:cover;
+  background:rgba(18,22,27,.6);
+}
+
+h1{margin:0;font-size:44px;letter-spacing:0.5px}
+.subtitle{margin:8px 0 0;color:var(--muted)}
+.tagline{margin:10px 0 0;max-width:60ch;line-height:1.5}
+.badge{
+  padding:10px 12px;border:1px solid var(--line);border-radius:999px;
+  color:var(--muted);background:rgba(18,22,27,.6)
+}
+
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+@media (min-width:860px){ .grid{grid-template-columns:1fr 1fr} .grid .card:nth-child(3){grid-column:1 / -1} }
+
+.card{
+  background:rgba(18,22,27,.75);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px 18px 16px;
+  backdrop-filter: blur(8px);
+}
+.card h2{margin:0 0 10px;font-size:20px}
+.card ul, .card ol{margin:10px 0 0;padding-left:18px;color:var(--text)}
+.card li{margin:8px 0;line-height:1.5}
+.note{
+  margin-top:12px;
+  padding:12px;
+  border:1px dashed #2b3644;
+  border-radius:12px;
+  color:var(--muted);
+}
+.small{color:var(--muted);font-size:13px;line-height:1.5}
+.mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+
+.paygrid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+@media (min-width:860px){ .paygrid{grid-template-columns:1fr 1fr} }
+.paybox{
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  background:rgba(11,13,16,.35);
+}
+.paybox h3{margin:0 0 10px;font-size:16px}
+.qr{width:100%;max-width:260px;border-radius:14px;border:1px solid var(--line);display:block}
+
+/* Primary button */
+.btn{
+  display:inline-block;
+  margin:8px 0 6px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  background:rgba(125,211,252,.12);
+  color:var(--text);
+  font-weight:600;
+}
+.btn:hover{
+  background:rgba(125,211,252,.18);
+  text-decoration:none;
+}
+
+/* Collapsible bank transfer section */
+.details{
+  margin-top:12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(11,13,16,.25);
+  padding:10px 12px;
+}
+.details summary{
+  cursor:pointer;
+  color:var(--text);
+  font-weight:600;
+}
+.detailsBody{
+  margin-top:10px;
+}
+
+.footer{padding:28px 20px;color:var(--muted)}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
