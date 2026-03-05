@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jarvis Worker — Demo</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="demo.js" defer></script>
+</head>
+<body>
+  <header class="container header">
+    <div class="headerLeft">
+      <img class="avatar" src="../images/JARVIS-profile.png" alt="Jarvis Worker profile" />
+      <div>
+        <h1>Jarvis Worker</h1>
+        <p class="subtitle">OpenClaw-based Agent · 可编程经济主体实验</p>
+      </div>
+    </div>
+    <div class="headerRight">
+      <nav class="nav">
+        <a href="../index.html">首页</a>
+        <a href="../earn/index.html">收入</a>
+        <a href="../consume.html">消费</a>
+        <a class="active" href="index.html">Demo</a>
+        <a href="../programmable-agent.html">可编程经济主体</a>
+        <a href="../contact.html">联系</a>
+        <a href="../team.html">团队</a>
+      </nav>
+      <div class="badge">Spend Request → Policy → Decision → Ledger</div>
+    </div>
+  </header>
+
+  <div class="container breadcrumbs">
+    <a href="../index.html">首页</a> / <span>Demo</span>
+  </div>
+
+  <main class="container grid">
+    <section class="card">
+      <h2>1）Spend Request（支出请求）</h2>
+      <p class="kicker">
+        这个 Demo <b>不会真实付款</b>，只演示“预算/权限/责任”三道闸如何把消费锁在边界内。
+        你可以选择示例请求，或直接编辑 JSON。
+      </p>
+
+      <div class="pillrow demoPills">
+        <span class="pill">示例：</span>
+        <button class="pill pillbtn" data-example="tooling">工具订阅</button>
+        <button class="pill pillbtn" data-example="reliability">质检审计</button>
+        <button class="pill pillbtn" data-example="charity">公益捐赠</button>
+        <button class="pill pillbtn" data-example="suspicious">异常触发</button>
+      </div>
+
+      <textarea id="req" class="demoTextArea mono" spellcheck="false"></textarea>
+
+      <div class="details">
+        <div class="pillrow" style="margin-top:0">
+          <span class="pill">模拟参数</span>
+          <label class="pill pillInput">
+            当月已花 <input id="spent" type="number" min="0" step="10" value="0" /> USD
+          </label>
+          <label class="pill pillInput">
+            当月总预算 <input id="cap" type="number" min="0" step="100" value="5000" /> USD
+          </label>
+        </div>
+        <div class="detailsBody small">
+          提示：你可以把“当月已花”调大来触发“超预算拒绝”。
+        </div>
+      </div>
+
+      <button id="btnEval" class="btn demoBtn">评估这条请求</button>
+      <div class="small">输出会写入一个“账本条目预览”（Ledger Preview），便于审计与复盘。</div>
+    </section>
+
+    <section class="card">
+      <h2>2）Decision（策略判定）</h2>
+      <p class="kicker">策略引擎会给出：通过 / 需要人工审批 / 拒绝 / 冻结（异常）。</p>
+
+      <div id="decision" class="badge mono">—</div>
+
+      <div class="details">
+        <div class="mono small"><b>Reasons</b></div>
+        <div class="detailsBody">
+          <ul id="reasons" class="small" style="margin:0; padding-left:18px;"></ul>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="mono small"><b>Next steps</b></div>
+        <div class="detailsBody">
+          <ul id="next" class="small" style="margin:0; padding-left:18px;"></ul>
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="mono small"><b>Ledger Preview</b></div>
+        <div class="detailsBody">
+          <pre id="ledger" class="demoPre mono">{}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="container" style="margin-top:18px">
+    <section class="card">
+      <h2>3）这套 Demo 在展示什么？</h2>
+      <ul>
+        <li><b>预算闸（Budget）：</b>单笔限额、总预算、预算桶（示意）。</li>
+        <li><b>权限闸（Permission）：</b>平台/商家白名单、类目白名单；越界自动降级为“需要人工”。</li>
+        <li><b>责任闸（Accountability）：</b>每笔支出必须绑定原因、关联交付、预期提升点；并生成可审计账本条目。</li>
+        <li><b>异常冻结（Kill-switch）：</b>短时高频小额/缺少必要信息等会触发冻结，先止损再复盘。</li>
+      </ul>
+
+      <div class="note">
+        <b>说明：</b>这里的规则与阈值是“示例策略”，用于展示结构化决策流程。
+        真实部署时应根据任务风险、预算规模与合规要求进行配置，并引入人工审批/多签等机制。
+      </div>
+
+      <p class="small">
+        想回到主站？<a href="../index.html">点这里</a>。
+      </p>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container small">© Jarvis Worker · Demo (static)</div>
+  </footer>
+</body>
+</html>
